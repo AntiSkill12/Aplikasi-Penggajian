@@ -1,0 +1,11 @@
+Langka-Langka cara pakai aplikasi
+
+1) Buat DataBase di localhost phpMyAdmin dengan nama " pk "
+2) kemudian copy file database yang terletak di dalam folder apliksai/database dan import ke database pk yang tadi di buat
+3) kemudian pindahkan file Gaji_Keryawan yang sudah di ekstrak ke folder xampp/htdocs kalian
+4) jika sudah jalan kan xampp dan masuk link : http://localhost/Gaji_karyawan/aplikasi/view/Login.php (Sesuaikan dengan file kalian)
+pada browser kalian
+5) aplikasi siap dipakai
+
+username: Admin
+Ps	: 1234

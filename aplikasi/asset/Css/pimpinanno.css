@@ -1,0 +1,331 @@
+/* ========== Menu samping dan bagian atas halaman ========== */
+
+#header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    width: 100%; /* Lebar 100% agar tetap di atas */
+    background-color: #e1c67c; /* Hapus komponen alpha, jadikan latar belakang lebih solid */
+    border-bottom: 5px solid #030000;
+  }
+  
+  #karyawan-table{
+    padding-bottom: 25px;
+    margin-bottom: 20px;
+  }
+  
+  body{
+    margin: 0; /* Menghilangkan margin bawaan body */
+    background: #F2F2F2;
+    overflow-y: scroll;
+  }
+  
+  img{
+    width: 100px;
+    height: 100px;
+    margin-left: 100px;
+    border-radius: 50%; 
+   
+  }
+  
+  .p{
+    color:black;
+    font-family: 'calibri';
+    font-weight: bold;
+    margin-left: 200PX;
+    border-bottom:  5px solid #030000; 
+    height: 110px;
+    padding-top: 10px;
+    background-color: #c69f358d;
+    margin-left: 180px;
+    padding-bottom: 5px;
+  }
+  
+  p1{
+    position: absolute;
+    margin-top: 25px;
+    font-size: 40px;
+    margin-left: 10px;
+    
+  }
+  
+  p3{
+    position: absolute;
+    font-size: 20px;
+    margin-left: 840px;
+    margin-top: 40px;
+  }
+  
+  h1{
+    font-size: 25px;
+    font-weight: bold;
+    border-bottom:  5px solid #030000; 
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin-top: 15px;
+    text-align: center;
+    padding-bottom: 35px;
+  }
+  
+  .list{
+    font-size: 25px;
+    margin-left: 290px;
+    font-weight: bold;
+    margin-top: 155px;
+  }
+  
+  .menu{
+    background-color: rgb(254, 254, 254);
+    z-index: 2;
+      width: 250px;
+      height: 101vh;
+      outline: none;
+      border-right:  5px solid #030000; 
+      font-family: 'Tahoma';
+      font-weight: bold;
+      margin-left: -8px;
+      background:linear-gradient(#FF8400, #FFD93D, #4F200D);
+      border-radius: 5px;
+      margin-top: -212px;  
+      position: absolute; 
+      position: fixed;
+  }
+  
+  .menu ul li {
+    list-style: none;
+  }
+  
+  ul li a {
+    display: block;
+    text-decoration: none;
+    text-align: left;
+    font-size: 18px;
+    padding: 15px;
+    color: rgb(7, 7, 7);
+  }
+  
+  ul li :hover{
+    color: rgb(79, 84, 84);
+  }
+  
+  /* Mengatur tampilan dropdown saat tidak aktif */
+  ul.dropdown {
+    display: none;
+      background:linear-gradient(#FF8400, #FFD93D, #4F200D);
+      border: 1px solid #000; /* Garis batas dropdown */
+      list-style: none;
+      padding: 0;
+      margin-right: 5px;
+      margin-left: -5px;
+  }
+  
+  /* Mengatur tampilan tautan dropdown */
+  li.dropdown-trigger:hover ul.dropdown {
+    display: block; /* Menampilkan dropdown saat tautan dihover */
+    z-index: 1; /* Menghindari tumpukan di bawah elemen lain */
+  }
+  
+  /* Mengatur tampilan tautan dropdown ketika aktif */
+  li.dropdown-trigger a {
+    text-decoration: none;
+    color: #000; /* Warna teks tautan dropdown */
+  }
+  
+  /* Mengatur tampilan item dropdown */
+  ul.dropdown li {
+    padding: 10px; /* Padding pada setiap item dropdown */
+    border-bottom: 1px solid #000; /* Garis pemisah antara item */
+  }
+  
+  /* Menghilangkan garis pemisah dari item terakhir */
+  ul.dropdown li:last-child {
+    border-bottom: none;
+  }
+  
+  li a:hover{
+    color: #6f6868;
+  }
+
+/* ========== Karyawan dan Jabatan ========== */
+  
+  table{
+    margin-left: 290px;
+    background-color: #FFFFFF;
+    margin-top: -15px;
+    padding-top: 50px;
+    padding-left: 16px;
+    padding-right: 13px;
+    padding-bottom: 10px;
+    border: #000;
+    position: absolute;
+  }
+  
+  .show{
+    position: absolute;
+    margin-left: 310px;
+    z-index: 1;
+  }
+  
+  
+  .pagination {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    margin-left: 400px;
+  }
+  
+  .pagination a {
+    margin: 0 5px;
+    text-decoration: none;
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 5px;
+  }
+  
+  .pagination a:hover {
+    background-color: #0056b3;
+  } 
+
+/* ========== Potongan dan Gaji ============== */
+  .showcari{
+    position: absolute;
+    margin-left: 310px;
+    z-index: 1;
+  }
+
+  .notif{
+    position: absolute;
+    z-index: 1;
+    
+  }
+
+  .tablegaji{
+    padding-top: 80px;
+  }
+
+
+/* ======== Data Admin ========= */
+.tambah{
+  font-size: 15px;
+  margin-left: 290px;
+  font-weight: bold;
+  color: black;
+  font-family: 'Tahoma';
+  background-color: white;
+  width: 653px;
+  padding-left: 10px;
+  padding-right: 139.5px;
+  padding-top: 5px;
+}
+
+.tambah2{
+  width: fit-content;
+}
+
+.tambah2:hover{
+  background-color: #FF8400;
+}
+a{
+  text-decoration: none;
+  color: black;
+  font-size: 15px;
+ 
+}
+
+
+
+/* ======== Profil =========== */
+
+  .form10{
+    padding: 5px 5px;
+    width: 32%;
+    margin-left: 300px;
+    color: black;
+    font-family: 'calibri';
+    font-size: 20px;
+    border-bottom: 20px solid #020201;
+    outline: none;
+    border-top: 20px solid #070707 ;
+    border-left:  5px solid #030000;
+    border-right:  5px solid #030000;
+    background-image: url(assets/images/pu.png);
+    background-size: 350px 370px;
+    background-repeat:no-repeat;
+    background-position:left;
+    
+  }
+
+  .tableprofil{
+    background-color: #fcfafd;
+    border-bottom: 3px solid #020201;
+    outline: none;
+    border-top: 3px solid #070707 ;
+    border-left:  3px solid #030000;
+    border-right:  3px solid #030000;
+    padding: 10px;
+    margin-left: 35px;
+    
+  }
+
+  .tableprofil td{
+    text-align: left;
+    font-weight: bold;
+  }
+
+  .h3profile{
+    border-top: 2px solid #070707 ;
+    border-left:  2px solid #030000;
+    border-right:  2px solid #030000;
+    border-bottom: 2px solid #020201;
+    font-size: 25px;
+    font-weight: bold;
+    width: 400px;
+    text-align: center;
+    background-color: white;
+    margin-left: 35px;
+  }
+  .edit{
+    text-decoration: none;
+    color: #000000;
+    background-color: rgb(184, 179, 179);
+    border-radius: 5px;
+    border: #000000;
+    border-bottom: 2px solid black;
+    border-right: 2px solid black;
+    border-left: 2px solid black;
+    border-top: 2px solid black;
+    padding: 5px;
+  }
+
+  .button2{
+    margin-top: 15px;
+    margin-bottom: 10px;
+  }
+
+  button a{
+    text-decoration: none;
+    color: #000;
+  }
+
+  .button1{
+    margin-left: 35px;
+    margin-top: 120px;
+    z-index: 1;
+  }
+
+  .table10{
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  .time{
+    position: absolute;
+    margin-top: -50px;
+    margin-left: 82%;
+    font-size: 18px;
+    font-weight: bold;
+    color: rgba(0, 0, 0, 0.633);
+  }
+

@@ -1,0 +1,133 @@
+/* CSS untuk slip gaji */
+body {
+    font-family: Arial, sans-serif;
+}
+
+.page {
+    page-break-before: always;
+}
+
+.logo {
+    width: 130px;
+    border-radius: 50%; 
+    margin-left: 50px;
+    margin-bottom: 20px;
+}
+
+.header {
+    display: flex;
+    margin-bottom: 20px;
+    border-bottom: 6px solid rgb(68, 65, 65);
+}
+
+.title {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.title2{
+    font-size: 20px;
+}
+
+.p{
+    margin-right: 70px;
+}
+
+.info {
+    font-size: 14px;
+    margin-left: 50px;
+}
+
+.detail{
+    margin-top: 30px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table, th, td {
+    border: 1px solid black;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+
+/* Bagian pendapatan */
+.income {
+    margin-top: 20px;
+}
+
+.income th {
+    background-color: #f2f2f2;
+}
+
+
+/* Bagian potongan */
+.deductions {
+    margin-top: 20px;
+}
+
+.deductions th {
+    background-color: #f2f2f2;
+}
+
+/* Total Gaji */
+.Total {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.Total th {
+    background-color: #f2f2f2;;
+}
+
+/* Tanda tangan */
+.signature {
+    margin-top: 40px;
+    text-align: center;
+}
+
+/* CSS untuk mencetak */
+@media print {
+    /* Menghilangkan URL di header */
+    @page {
+        margin: 0;
+       
+    }
+    body {
+        margin: 1.6cm;
+    }
+
+    .header {
+        margin: 0;
+    }
+
+    .title {
+        text-align: center;
+    }
+
+    .info {
+        text-align: center;
+    }
+
+
+    th, td {
+        padding: 8px;
+    }
+
+    .signature {
+        text-align: right;
+    }
+
+    .page {
+        page-break-before: always;
+        /* margin: 0; */
+        margin-top: 50px;
+    }
+}

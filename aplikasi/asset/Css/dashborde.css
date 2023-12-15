@@ -1,0 +1,202 @@
+  body{
+    margin: 0; /* Menghilangkan margin bawaan body */
+    background: #F2F2F2;
+    overflow: hidden;
+  }
+
+  .time{
+    position: absolute;
+    margin-top: -50px;
+    margin-left: 83%;
+    font-size: 18px;
+    font-weight: bold;
+    color: rgba(0, 0, 0, 0.633);
+  }
+  
+  .p{
+    color:black;
+    font-family: 'calibri';
+    font-weight: bold;
+    margin-left: 200PX;
+    border-bottom:  5px solid #030000; 
+    height: 110px;
+    padding-top: 10px;
+    background-color: #e1c67c; 
+    margin-left: 180px;
+    padding-bottom: 5px;
+  }
+  
+  p1{
+    position: absolute;
+    margin-top: 25px;
+    font-size: 40px;
+    margin-left: 10px;
+  }
+  
+  p3{
+    font-size: 20px;
+    margin-left: 420px;
+  }
+  
+  img{
+    width: 100px;
+    height: 100px;
+    margin-left: 100px;
+    border-radius: 50%; 
+   
+  }
+  
+  h1{
+    font-size: 25px;
+    font-weight: bold;
+    border-bottom:  5px solid #030000; 
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin-top: 10px;
+    text-align: center;
+  }
+
+  p{
+    font-size: 25px;
+    margin-left: 295px;
+    font-weight: bold;
+  }
+
+  .menu{
+    background-color: rgb(254, 254, 254);
+    width: 250px;
+    height: 101vh;
+    outline: none;
+    border-right:  5px solid #030000; 
+    font-family: 'Tahoma';
+    font-weight: bold;
+    margin-left: -8px;
+    background:linear-gradient(#FF8400, #FFD93D, #4F200D);
+    border-radius: 5px;
+    margin-top: -210px;  
+    position: absolute; 
+  }
+  
+  .menu h1{
+    padding-bottom: 10px;
+  }
+  
+  .menu ul li {
+    list-style: none;
+  }
+  
+  ul li a {
+    display: block;
+    text-decoration: none;
+    text-align: left;
+    font-size: 18px;
+    padding: 15px;
+    color: rgb(7, 7, 7);
+  }
+  
+  ul li :hover{
+    color: rgb(79, 84, 84);
+  }
+  
+  /* Mengatur tampilan dropdown saat tidak aktif */
+  ul.dropdown {
+    display: none;
+    background:linear-gradient(#FF8400, #FFD93D, #4F200D);
+    border: 1px solid #000; /* Garis batas dropdown */
+    list-style: none;
+    padding: 0;
+    margin-right: 5px;
+    margin-left: -5px;
+  }
+  
+  /* Mengatur tampilan tautan dropdown */
+  li.dropdown-trigger:hover ul.dropdown {
+    display: block; /* Menampilkan dropdown saat tautan dihover */
+    z-index: 1; /* Menghindari tumpukan di bawah elemen lain */
+  }
+  
+  /* Mengatur tampilan tautan dropdown ketika aktif */
+  li.dropdown-trigger a {
+    text-decoration: none;
+    color: #000; /* Warna teks tautan dropdown */
+  }
+  
+  /* Mengatur tampilan item dropdown */
+  ul.dropdown li {
+    padding: 10px; /* Padding pada setiap item dropdown */
+    border-bottom: 1px solid #000; /* Garis pemisah antara item */
+  }
+  
+  /* Menghilangkan garis pemisah dari item terakhir */
+  ul.dropdown li:last-child {
+    border-bottom: none;
+  }
+  
+  li a:hover{
+    color: #6f6868;
+  }
+  
+.dashboard-tampilan{
+  margin-left: 280px;
+}
+
+ /* Tambahkan style untuk dashboard-box */
+.dashboard-box {
+  background-color: #FFFFFF;
+  border: 1px solid #CCCCCC;
+  border-radius: 5px;
+  padding: 25px;
+  margin: 10px;
+  width: 220px;
+  border-radius: 10px;
+  display: inline-block;
+  border-left: 8px solid black;
+  box-shadow: 10px 10px 6px rgba(116, 112, 112, 0.2);
+}
+
+/* Styling untuk ikon */
+.dashboard-box i {
+  font-size: 30px;
+  margin-bottom: 10px;
+  position: absolute;
+  margin-top: 9px;
+  margin-left: 190px;
+  color: rgba(0, 0, 0, 0.364);
+}
+
+/* Styling untuk teks dalam dashboard-box */
+.dashboard-box h2 {
+  font-size: 20px;
+  margin: 0;
+  text-align: left;
+  
+}
+
+.dashboard-box span {
+  font-size: 24px;
+  font-weight: bold;
+  margin-left: 10px;
+}
+
+#box1{
+  border-left: 8px solid #FF8400;
+}
+
+#box1 h2{
+  color: #FF8400
+}
+
+#box2{
+  border-left: 8px solid #FFD93D;
+}
+
+#box2 h2{
+  color: #FFD93D
+}
+
+#box3{
+  border-left: 8px solid #e1c67c;
+}
+
+#box3 h2{
+  color: #e1c67c
+}
