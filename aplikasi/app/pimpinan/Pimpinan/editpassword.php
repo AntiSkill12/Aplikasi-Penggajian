@@ -61,6 +61,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../../asset/css/Pradminss.css">
+    <link rel="stylesheet" href="../../../asset/css/nama.css">
     <title>HALAMAN EDIT PASSWORD</title>
     <link rel="icon" type="image/png" href="../../../asset/img/icons/logo1.jpg"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
@@ -68,7 +69,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
 <div class="p">
     <img src="../../../asset/img/logo.jpg" alt="">
-    <p1>PONDOK COFFEE BU SEH <p3>Selamat Datang <?= $username; ?></p3></p1>
+    <p1>PONDOK COFFEE BU SEH <p3></p3></p1>
+    <p3 id="nama">Selamat Datang <?=$username;?></p3>
 </div>
 <p>Edit Password</p>
 

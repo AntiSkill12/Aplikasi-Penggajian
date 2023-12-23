@@ -6,18 +6,15 @@ if (isset($_POST['login'])){
     $un=$_POST['username'];
     $ps=$_POST['password'];
 
-    $q = $conn->query("SELECT * FROM ADMIN WHERE username='$un'");
-    $get_data = mysqli_fetch_array($q);
-    $passwordbaru = $get_data['password'];
+    $q = $conn->query("SELECT * FROM admin WHERE username='$un'");
+    if ($q && $q->num_rows > 0) { // Periksa apakah query mengembalikan hasil
+        $get_data = mysqli_fetch_array($q);
+        $passwordbaru = $get_data['password'];
 
-    if (empty($get_data)){
-        $pesan = 'Username & Password tidak terdaftar!';
-    } else {
-        // Menggunakan password_verify untuk memeriksa kata sandi
-        // Anda perlu menambahkan konversi MD5 di sini
+        // Validasi password
         $ps_md5 = md5($ps);
 
-        if ($ps_md5 === $passwordbaru) { // Membandingkan MD5 hash
+        if ($ps_md5 === $passwordbaru) {
             $role = $get_data['role'];
 
             session_start();
@@ -25,8 +22,8 @@ if (isset($_POST['login'])){
             $_SESSION['username'] = $un;
             $_SESSION['role'] = $role;
 
-             // Tentukan halaman redirect berdasarkan peran
-             if ($role === 'pimpinan') {
+            // Tentukan halaman redirect berdasarkan peran
+            if ($role === 'pimpinan') {
                 $redirect = 'http://localhost/Gaji_Karyawan/aplikasi/app/pimpinan/dashboard.php';
             } elseif ($role === 'admin') {
                 $redirect = 'dashboard.php';
@@ -38,6 +35,8 @@ if (isset($_POST['login'])){
         } else {
             $pesan = 'Password salah!';
         }
+    } else {
+        $pesan = 'Username & Password tidak terdaftar!';
     }
     echo("<script language='JavaScript'>
     window.alert('$pesan'); 

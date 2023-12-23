@@ -1,0 +1,23 @@
+#nama{
+    position: absolute;
+    /* position: sticky; */
+    margin-top: 35px;
+    margin-left: 55%;
+    font-size: 19px;
+    font-weight: bold;
+    color: black;
+}
+
+.nama{
+    position: absolute;
+    /* position: sticky; */
+    margin-top: 35px;
+    margin-left: 55%;
+    font-size: 19px;
+    font-weight: bold;
+    color: black;
+}
+
+#time{
+    margin-left: 80%;
+}

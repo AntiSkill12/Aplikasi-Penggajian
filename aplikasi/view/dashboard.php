@@ -33,6 +33,7 @@ $totalJabatan = $dataJabatan['totaljabatan'];
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../asset/css/dashborde.css">
+    <link rel="stylesheet" href="../asset/css/nama.css">
     <title>HALAMAN DASHBOARD</title>
     <link rel="icon" type="image/png" href="../asset/img/icons/logo1.jpg"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
@@ -41,10 +42,11 @@ $totalJabatan = $dataJabatan['totaljabatan'];
 <body>
   <div class="p">
     <img src="../asset/img/logo.jpg" alt="">
-    <p1>PONDOK COFFEE BU SEH <p3>Selamat Datang <?=$username;?></p3></p1>
+    <p1>PONDOK COFFEE BU SEH <p3></p3></p1>
+    <p3 class="nama">Selamat Datang <?=$username;?></p3>
   </div>
   <p>Dashboard</p>
-  <p class="time">Tanggal <?= strftime('%d %B %Y'); ?></p>
+  <p id="time" class="time">Tanggal <?= strftime('%d %B %Y'); ?></p>
   
   <div class="menu">
     <br><h1>PENGGAJIAN <br> KARYAWAN <br><br></h1>
