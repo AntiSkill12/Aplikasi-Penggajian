@@ -104,7 +104,7 @@ $username = $dataUsername['username'];
       
       <tr>
         <?php
-        if (isset($_GET['cari'])) {
+        if (isset($_GET['cari'])) { 
           $bulanCari = $_GET['cari'];
           list($tahun, $bulan) = explode('-', $bulanCari); // Pisahkan tahun dan bulan
 
