@@ -78,7 +78,7 @@ $username = $dataUsername['username'];
         <tr>
           <td>Password</td>
           <td>:</td>
-          <td><input type="password" name="password" placeholder="" required></td>
+          <td><input type="password" name="password" placeholder="" required minlength="6"></td>
         </tr>
         <tr>
           <td>Role</td>

@@ -86,6 +86,7 @@ if (isset($_POST['login'])){
 							Login
 						</button>
 					</div>
+                    <h3><a href="http://localhost/Gaji_karyawan/aplikasi/lupa_password.php">Lupa Password</a></h3>
 				</form>
 			</div>
 		</div>

@@ -18,7 +18,7 @@ $username = $dataUsername['username'];
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../../asset/css/pimpinanno.css">
+    <link rel="stylesheet" href="../../../asset/css/Pradminsss.css">
     <link rel="stylesheet" href="../../../asset/css/nama.css">
     <title>HALAMAN PROFIL PIMPINAN</title>
     <link rel="icon" type="image/png" href="../../../asset/img/icons/logo1.jpg"/>

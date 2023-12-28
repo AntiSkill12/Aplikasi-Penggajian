@@ -51,8 +51,8 @@ if (!$result) {
     <div class="header">   
         <img class="logo" src="../../asset/img/logo.jpg" alt="Logo Perusahaan" style="margin-left:50px;">
         <div class="info">
-            <p class="title" style="margin-left:250px;">PONDOK COFFEE BU SEH</p>
-            <p class="title2" style="margin-left:250px;">Daftar  Rekap Gaji Karyawan</p>
+            <p class="title" style="margin-left:190px;">PONDOK COFFEE BU SEH</p>
+            <p class="title2" style="margin-left:190px;">Daftar  Rekap Gaji Karyawan</p>
          </div>
     </div>
 
@@ -139,6 +139,11 @@ if (!$result) {
         mysqli_close($conn);
         ?>
     </table>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
      <!-- Tanda tangan -->
      <div class="signature">
                     <p>Tanjung Uban, <?= strftime('%d %B %Y'); ?> </p>

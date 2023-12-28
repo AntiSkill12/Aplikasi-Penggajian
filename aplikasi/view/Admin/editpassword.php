@@ -109,7 +109,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <tr>
             <td>Password Baru</td>
             <td>:</td>
-            <td><input type="password" name="password_baru" required></td>
+            <td><input type="password" name="password_baru" required minlength="6"></td>
         </tr>
         <tr>
             <td></td>

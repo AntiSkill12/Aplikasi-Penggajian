@@ -19,22 +19,37 @@ $data_admin = mysqli_fetch_assoc($result_admin);
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nama_admin = $_POST['nama_admin'];
     $email = $_POST['email'];
-    $username = $_POST['username'];
+    $username_input = $_POST['username'];
     
-    // Update data admin
-    $query_update_admin = "UPDATE admin SET nama_admin = '$nama_admin', email = '$email', username = '$username' WHERE id = $id";
-    if (mysqli_query($conn, $query_update_admin)) {
-        $pesan = 'Data berhasil di Update';
-        $redirect = 'admin.php';
-        echo("<script language='JavaScript'>
-        window.alert('$pesan'); 
-        window.location.href='$redirect';
-        </script>");
+    // Verifikasi apakah email sudah digunakan sebelumnya
+    $email_check_query = "SELECT * FROM admin WHERE email='$email' AND id != $id";
+    $result_email_check = mysqli_query($conn, $email_check_query);
+    if (mysqli_num_rows($result_email_check) > 0) {
+        echo "<script>alert('Email sudah digunakan sebelumnya!');</script>";
     } else {
-        echo "<script>alert('Gagal memperbarui profil: " . mysqli_error($conn) . "');</script>";
+        // Verifikasi apakah username sudah digunakan sebelumnya
+        $username_check_query = "SELECT * FROM admin WHERE username='$username_input' AND id != $id";
+        $result_username_check = mysqli_query($conn, $username_check_query);
+        if (mysqli_num_rows($result_username_check) > 0) {
+            echo "<script>alert('Username sudah digunakan sebelumnya!');</script>";
+        } else {
+            // Update data admin
+            $query_update_admin = "UPDATE admin SET nama_admin = '$nama_admin', email = '$email', username = '$username_input' WHERE id = $id";
+            if (mysqli_query($conn, $query_update_admin)) {
+                $pesan = 'Data berhasil di Update';
+                $redirect = 'admin.php';
+                echo("<script language='JavaScript'>
+                window.alert('$pesan'); 
+                window.location.href='$redirect';
+                </script>");
+            } else {
+                echo "<script>alert('Gagal memperbarui profil: " . mysqli_error($conn) . "');</script>";
+            }
+        }
     }
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">

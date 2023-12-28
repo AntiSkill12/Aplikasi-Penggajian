@@ -26,25 +26,52 @@ if (isset($_GET['id'])) {
 if (isset($_POST["submit"])) {
     $nama_admin = $_POST ["nama_admin"];
     $email = $_POST ["email"];
-    $username = $_POST ["username"];
+    $username_input = $_POST ["username"];
     $role = $_POST ["role"];
 
-    $sql = "UPDATE `admin` SET `nama_admin` = '$nama_admin', `email` = '$email', `username` = '$username', `role` = '$role' WHERE `admin`.`id` = $admin_id ";
+    // Update data kecuali password jika password baru dan konfirmasi password tidak kosong
+    $password_baru = $_POST['password_baru'];
+    $confirm_password = $_POST['confirm_password'];
 
-    $result = mysqli_query($conn, $sql);
-
-    if ($result) {
-        $pesan = 'Data berhasil di Update';
-        $redirect = "data_admin.php";
-        echo("<script language='JavaScript'>
-            window.alert('$pesan'); 
-            window.location.href='$redirect';
-            </script>");
+    // Verifikasi apakah email sudah digunakan sebelumnya
+    $email_check_query = "SELECT * FROM admin WHERE email='$email' AND id != $admin_id";
+    $result_email_check = mysqli_query($conn, $email_check_query);
+    if (mysqli_num_rows($result_email_check) > 0) {
+        echo "<script>alert('Email sudah digunakan sebelumnya!');</script>";
     } else {
-        echo "Failed: " . mysqli_error($conn);
+        // Verifikasi apakah username sudah digunakan sebelumnya
+        $username_check_query = "SELECT * FROM admin WHERE username='$username_input' AND id != $admin_id";
+        $result_username_check = mysqli_query($conn, $username_check_query);
+        if (mysqli_num_rows($result_username_check) > 0) {
+            echo "<script>alert('Username sudah digunakan sebelumnya!');</script>";
+        } else {
+            if (!empty($password_baru) && !empty($confirm_password) && $password_baru === $confirm_password) {
+                // Enkripsi password baru dengan MD5
+                $password_baru_md5 = md5($password_baru);
+
+                $sql = "UPDATE `admin` SET `nama_admin` = '$nama_admin', `email` = '$email', `username` = '$username_input', `role` = '$role', `password` = '$password_baru_md5' WHERE `admin`.`id` = $admin_id";
+
+                $result = mysqli_query($conn, $sql);
+
+                if ($result) {
+                    $pesan = 'Data berhasil di Update';
+                    $redirect = "data_admin.php";
+                    echo("<script language='JavaScript'>
+                        window.alert('$pesan'); 
+                        window.location.href='$redirect';
+                        </script>");
+                } else {
+                    echo "Failed: " . mysqli_error($conn);
+                }
+            } else {
+                echo "<script>alert('Password dan konfirmasi Password harus sama!');</script>";
+            }
+        }
     }
 }
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -113,6 +140,16 @@ if (isset($_POST["submit"])) {
                     <td>Username</td>
                     <td>:</td>
                     <td><input type="text" name="username" value="<?php echo $data['username'] ?>" required></td>
+                </tr>
+                <tr>
+                    <td>Password Baru</td>
+                    <td>:</td>
+                    <td><input type="password" name="password_baru" required minlength="6"></td>
+                </tr>
+                <tr>
+                    <td>Confirm Password </td>
+                    <td>:</td>
+                    <td><input type="password" name="confirm_password" required minlength="6"></td>
                 </tr>
                 <tr>
                     <td>Role</td>

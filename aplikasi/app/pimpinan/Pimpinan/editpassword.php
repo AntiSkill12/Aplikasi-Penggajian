@@ -60,7 +60,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../../asset/css/Pradminss.css">
+    <link rel="stylesheet" href="../../../asset/css/Pradminsss.css">
     <link rel="stylesheet" href="../../../asset/css/nama.css">
     <title>HALAMAN EDIT PASSWORD</title>
     <link rel="icon" type="image/png" href="../../../asset/img/icons/logo1.jpg"/>
@@ -109,7 +109,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <tr>
             <td>Password Baru</td>
             <td>:</td>
-            <td><input type="password" name="password_baru" required></td>
+            <td><input type="password" name="password_baru" required minlength="6"></td>
         </tr>
         <tr>
             <td></td>
