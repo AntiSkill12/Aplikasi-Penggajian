@@ -3,10 +3,10 @@ include '../../config/koneksi.php';
 $pesan='';
 $nama_jabatan = $_POST ["nama_jabatan"];
 $gaji_pokok = $_POST ["gaji_pokok"];
-$uang_makan = $_POST ["uang_makan"];
+// $uang_makan = $_POST ["uang_makan"];
 
 
-$simpan = mysqli_query ($conn, " INSERT INTO `jabatan` (`nama_jabatan`, `gaji_pokok`, `uang_makan`) VALUES ( '$nama_jabatan', '$gaji_pokok', '$uang_makan');");
+$simpan = mysqli_query ($conn, " INSERT INTO `jabatan` (`nama_jabatan`, `gaji_pokok`) VALUES ( '$nama_jabatan', '$gaji_pokok');");
           
 if ($simpan){
     $pesan = 'data berhasil ditambah';

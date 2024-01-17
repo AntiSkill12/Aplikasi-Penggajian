@@ -75,7 +75,6 @@ $username = $dataUsername['username'];
                 <th width="50px">NO</th>
                 <th width="150px">JABATAN</th>
                 <th width="200px">GAJI POKOK</th>
-                <th width="200px">UANG MAKAN</th>
                 <th width="200px">TOTAL</th>
             </tr>
             <tr>
@@ -92,8 +91,7 @@ $username = $dataUsername['username'];
                         <td align="center"><?= $no++; ?></td>
                         <td align="center"><?php echo $data['nama_jabatan']; ?></td>
                         <td align="center">Rp <?= number_format($data['gaji_pokok']); ?></td>
-                        <td align="center">Rp <?= number_format($data['uang_makan']); ?></td>
-                        <td align="center">Rp <?= number_format($data['gaji_pokok'] + $data['uang_makan']); ?></td>
+                        <td align="center">Rp <?= number_format($data['gaji_pokok']); ?></td>
                     </tr>
                 <?php
                 }

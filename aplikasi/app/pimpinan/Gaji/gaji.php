@@ -111,7 +111,6 @@ $username = $dataUsername['username'];
             <th width= "110px">Jadwal kerja</th>
             <th width= "100px">Jabatan</th>
             <th width= "120px">Gaji Pokok</th>
-            <th width= "120px">Uang Makan</th>
             <th width= "150px">Total Potongan</th>
             <th width= "120px">Total Gaji</th>
         </tr>
@@ -127,13 +126,12 @@ $username = $dataUsername['username'];
                 $jabatan = $row['Jabatan'];
 
                 // Query data tidak hadir dan setengah hari dari tabel absen
-                $queryAbsen = "SELECT tidak_hadir, sthari, gaji_pokok, uang_makan FROM absen WHERE bulan = '$bulan' AND Nama = '$nama' ";
+                $queryAbsen = "SELECT tidak_hadir, sthari, gaji_pokok FROM absen WHERE bulan = '$bulan' AND Nama = '$nama' ";
                 $resultAbsen = mysqli_query($conn, $queryAbsen);
                 $rowAbsen = mysqli_fetch_assoc($resultAbsen);
                 $tidakHadir = $rowAbsen['tidak_hadir'];
                 $setengahHari = $rowAbsen['sthari'];
                 $gajiPokok = $rowAbsen['gaji_pokok'];
-                $uangMakan = $rowAbsen['uang_makan'];
 
                 // Hitung potongan gaji Tidak Hadir
                 $potonganTidakHadir = ($tidakHadir * $gajiPokok) / 30;
@@ -141,14 +139,11 @@ $username = $dataUsername['username'];
                 // Hitung potongan gaji Setengah Hari
                 $potonganSetengahHari = ($setengahHari * $gajiPokok) / 30 / 2;
 
-                // Hitung potongan uang makan
-                $potonganuangmakan = $uangMakan;
-
                 // Hitung Total Potongan
-                $totalPotongan = $potonganuangmakan + $potonganTidakHadir + $potonganSetengahHari;
+                $totalPotongan = $potonganTidakHadir + $potonganSetengahHari;
 
                 // Hitung Total Gaji
-                $totalGaji = $gajiPokok + $uangMakan - $totalPotongan;
+                $totalGaji = $gajiPokok - $totalPotongan;
 
                 // Mengakumulasi nilai totalGaji untuk setiap data
                 $totalKeseluruhanGaji += $totalGaji;
@@ -161,7 +156,6 @@ $username = $dataUsername['username'];
                 echo "<td align='center'>$Jadwal_Kerja</td>";
                 echo "<td align='center'>$jabatan</td>";
                 echo "<td align='center'>Rp " . number_format($gajiPokok) . "</td>";
-                echo "<td align='center'>Rp " . number_format($uangMakan) . "</td>";
                 echo "<td align='center'>Rp " . number_format($totalPotongan) . "</td>";
                 echo "<td align='center'>Rp " . number_format($totalGaji) . "</td>";
                 echo "</tr>";
@@ -173,7 +167,7 @@ $username = $dataUsername['username'];
         // <!-- Tampilkan informasi total keseluruhan gaji di bawah tabel jika ada hasil pencarian -->
         if ($queryResult ) {
             echo "<tr>";
-            echo "<td colspan='8' align='right' height='40'><b>Total Keseluruhan Gaji Karyawan Bulan: " . date('m', strtotime($bulanCari)) ." Tahun: $tahun </b> </td>";
+            echo "<td colspan='7' align='right' height='40'><b>Total Keseluruhan Gaji Karyawan Bulan: " . date('m', strtotime($bulanCari)) ." Tahun: $tahun </b> </td>";
             echo "<td align='center'><b>Rp. " . number_format($totalKeseluruhanGaji) . "</b></td>";
             echo "</tr>";
             

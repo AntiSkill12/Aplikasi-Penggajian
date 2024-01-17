@@ -72,7 +72,6 @@ $username = $dataUsername['username'];
                 <th width="50px">JADWAL KERJA</th>
                 <th width="80px">JABATAN</th>
                 <th width="120px">GAJI POKOK</th>
-                <th width="120px">UANG MAKAN</th>
                 <th width="100px">TIDAK HADIR</th>
                 <th width="100px">SETENGAH HARI</th>
             </tr>
@@ -89,12 +88,11 @@ $username = $dataUsername['username'];
                     $jabatan = $dataKaryawan['Jabatan'];
 
                     // Query untuk mengambil data Gaji Pokok dan Uang Makan dari database Jabatan berdasarkan nama jabatan
-                    $queryJabatan = mysqli_query($conn, "SELECT gaji_pokok, uang_makan FROM jabatan WHERE nama_jabatan = '$jabatan'");
+                    $queryJabatan = mysqli_query($conn, "SELECT gaji_pokok FROM jabatan WHERE nama_jabatan = '$jabatan'");
 
                     // Set nilai default jika query tidak mengembalikan hasil
                     $dataJabatan = [
-                        'gaji_pokok' => '',
-                        'uang_makan' => ''
+                        'gaji_pokok' => ''
                     ];
 
                     // Cek apakah query berhasil dan hasilnya tidak kosong
@@ -108,9 +106,8 @@ $username = $dataUsername['username'];
                     echo "<td><input type='text' name='jenis[]' value='$jenis' readonly></td>";
                     echo "<td><input type='text' name='jabatan[]' value='$jabatan' readonly></td>";
                     echo "<td><input type='text' name='gaji_pokok[]' value='Rp " . ($dataJabatan['gaji_pokok'] != '' ? number_format($dataJabatan['gaji_pokok']) : '') . "' readonly></td>";
-                    echo "<td><input type='text' name='uang_makan[]' value='Rp " . ($dataJabatan['uang_makan'] != '' ? number_format($dataJabatan['uang_makan']) : '') . "' readonly></td>";
-                    echo "<td><input type='number' name='tidak_hadir[]' required></td>";
-                    echo "<td><input type='number' name='sthari[]' required></td>";
+                    echo "<td><input type='number' name='tidak_hadir[]' value='" . ($dataJabatan['gaji_pokok'] != 0 ? '0' : '') . "' required></td>"; // Memberikan nilai default 0 jika tidak_hadir adalah 0
+                    echo "<td><input type='number' name='sthari[]' value='" . ($dataJabatan['gaji_pokok'] != 0 ? '0' : '') . "' required></td>"; // Memberikan nilai default 0 jika sthari adalah 0
                     echo "</tr>";
                 }
                 ?>
@@ -130,7 +127,6 @@ $username = $dataUsername['username'];
     <script>
     function validateForm() {
         var gajiPokok = document.getElementsByName("gaji_pokok[]");
-        var uangMakan = document.getElementsByName("uang_makan[]");
         var tidakHadir = document.getElementsByName("tidak_hadir[]");
         var sthari = document.getElementsByName("sthari[]");
         let tanggal = document.getElementsByName('bulan')

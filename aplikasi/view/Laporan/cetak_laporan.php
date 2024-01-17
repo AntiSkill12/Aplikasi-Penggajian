@@ -54,13 +54,12 @@ if (!$result) {
             $jabatan = $row['Jabatan'];
 
            // Query data tidak hadir dan setengah hari dari tabel absen
-           $queryAbsen = "SELECT tidak_hadir, sthari, gaji_pokok, uang_makan FROM absen WHERE bulan = '$bulan' AND Nama = '$nama'";
+           $queryAbsen = "SELECT tidak_hadir, sthari, gaji_pokok FROM absen WHERE bulan = '$bulan' AND Nama = '$nama'";
            $resultAbsen = mysqli_query($conn, $queryAbsen);
            $rowAbsen = mysqli_fetch_assoc($resultAbsen);
            $tidakHadir = $rowAbsen['tidak_hadir'];
            $setengahHari = $rowAbsen['sthari'];
            $gajiPokok = $rowAbsen['gaji_pokok'];
-           $uangMakan = $rowAbsen['uang_makan'];
 
             // Hitung potongan gaji Tidak Hadir
             $potonganTidakHadir = ($tidakHadir * $gajiPokok) / 30;
@@ -68,14 +67,12 @@ if (!$result) {
             // Hitung potongan gaji Setengah Hari
             $potonganSetengahHari = ($setengahHari * $gajiPokok) / 30 / 2;
 
-            // Hitung potongan uang makan
-            $potonganuangmakan = $uangMakan;
 
             // Hitung Total Potongan
-            $totalPotongan = $potonganuangmakan + $potonganTidakHadir + $potonganSetengahHari;
+            $totalPotongan = $potonganTidakHadir + $potonganSetengahHari;
 
             // Hitung Total Gaji
-            $totalGaji = $gajiPokok + $uangMakan - $totalPotongan;
+            $totalGaji = $gajiPokok - $totalPotongan;
             ?>
 
             <div class="page">
@@ -107,14 +104,6 @@ if (!$result) {
                         <td>GAJI POKOK</td>
                         <td>Rp <?= number_format($gajiPokok); ?></td>
                     </tr>
-                    <tr>
-                        <td>UANG MAKAN</td>
-                        <td>Rp <?= number_format($uangMakan); ?></td>
-                    </tr>
-                    <tr>
-                        <th>TOTAL GAJI KOTOR</th>
-                        <th>Rp <?= number_format($gajiPokok + $uangMakan); ?></th>
-                    </tr>
                 </table>
 
                 
@@ -123,10 +112,6 @@ if (!$result) {
                     <tr>
                         <th width="250px">POTONGAN</th>
                         <th width="150px">JUMLAH</th>
-                    </tr>
-                    <tr>
-                        <td>UANG MAKAN</td>
-                        <td>Rp <?= number_format($potonganuangmakan); ?></td>
                     </tr>
                     <tr>
                         <td>TIDAK HADIR    (<?= number_format($tidakHadir); ?> Kali)</td>

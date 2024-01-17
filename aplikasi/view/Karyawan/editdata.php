@@ -24,7 +24,7 @@ if (isset($_GET['id'])) {
 }
 
 if (isset($_POST["submit"])) {
-    $Nama = $_POST["Nama"];
+    $Nama = $_POST["Nam a"];
     $Jabatan = $_POST["Jabatan"];
     $Jenis_Kelamin = $_POST["Jenis_Kelamin"];
     $Jadwal_Kerja = $_POST["Jadwal_Kerja"];

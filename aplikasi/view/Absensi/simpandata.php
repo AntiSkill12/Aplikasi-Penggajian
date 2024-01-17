@@ -12,9 +12,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $tidak_hadir = $_POST["tidak_hadir"];
     $sthari = $_POST["sthari"];
     $gaji_pokok = $_POST["gaji_pokok"];
-    $uang_makan = $_POST["uang_makan"];
 
-      // Periksa apakah data untuk bulan dan tahun tersebut sudah ada
+    // Periksa apakah data untuk bulan dan tahun tersebut sudah ada
     $queryCekData = "SELECT COUNT(*) as total FROM absen WHERE bulan = '$bulan'";
 
     $resultCekData = mysqli_query($conn, $queryCekData);
@@ -33,7 +32,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 // Validasi apakah data yang diperlukan telah diisi
                 if (
                     empty(trim($gaji_pokok[$i])) ||
-                    empty(trim($uang_makan[$i])) ||
                     empty(trim($jabatan[$i]))
                 ) {
                     $error = true; // Menandai bahwa terdapat kesalahan
@@ -48,19 +46,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $tidakHadirKaryawan = $tidak_hadir[$i];
                 $setengahHariKaryawan = $sthari[$i];
                 $gajiPokokKaryawan = str_replace('Rp ', '', str_replace(',', '', $gaji_pokok[$i])); // Menghapus 'Rp' dan pemisah ribuan
-                $uangMakanKaryawan = str_replace('Rp ', '', str_replace(',', '', $uang_makan[$i])); // Menghapus 'Rp' dan pemisah ribuan
 
                 // Cek jika ada data yang kosong untuk karyawan tertentu
-                if ($gajiPokokKaryawan === '' || $uangMakanKaryawan === '') {
+                if ($gajiPokokKaryawan === '') {
                     $error = true;
-                    $pesan = 'Gaji Pokok atau Uang Makan tidak lengkap, Silakan periksa Jabatan Karyawan.';
+                    $pesan = 'Gaji Pokok tidak lengkap, Silakan periksa Jabatan Karyawan.';
                     break;
                 }
 
                 // Selanjutnya, Anda bisa menyimpan data ini ke database
                 // Gunakan query SQL INSERT untuk memasukkan data ke tabel absen
-                $query = "INSERT INTO `absen` (`bulan`, `Nama`, `Jadwal_Kerja`, `Jabatan`, `tidak_hadir`, `sthari`, `gaji_pokok`, `uang_makan`) 
-                            VALUES ('$bulan', '$namaKaryawan', '$jenisKaryawan', '$jabatanKaryawan', '$tidakHadirKaryawan', '$setengahHariKaryawan', $gajiPokokKaryawan, $uangMakanKaryawan)";
+                $query = "INSERT INTO `absen` (`bulan`, `Nama`, `Jadwal_Kerja`, `Jabatan`, `tidak_hadir`, `sthari`, `gaji_pokok`) 
+                            VALUES ('$bulan', '$namaKaryawan', '$jenisKaryawan', '$jabatanKaryawan', '$tidakHadirKaryawan', '$setengahHariKaryawan', $gajiPokokKaryawan)";
 
                 // Eksekusi query (lakukan koneksi database terlebih dahulu)
                 $result = mysqli_query($conn, $query);

@@ -68,11 +68,12 @@ $username = $dataUsername['username'];
           <td>:</td>
           <td>Rp. <input type="text" name="gaji_pokok" placeholder="" required></td>
         </tr>
-        <tr>
+        <!-- <tr>
           <td>Uang Makan</td>
           <td>:</td>
           <td>Rp. <input type="text" name="uang_makan" placeholder="" required></td>
-        </tr>  
+        </tr>   -->
+        <tr>
             <td><br>
               <input type="submit" name="simpan" value="Simpan">
               <input type="reset" name="hapus" value="Hapus">

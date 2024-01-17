@@ -10,10 +10,10 @@ $username = $_SESSION['username'];
 if (isset($_POST["submit"])) {
   $nama_jabatan = $_POST ["nama_jabatan"];
   $gaji_pokok = $_POST ["gaji_pokok"];
-  $uang_makan = $_POST ["uang_makan"];
+  // $uang_makan = $_POST ["uang_makan"];
   
 
-  $sql = "UPDATE `jabatan` SET `id` = '$id', `nama_jabatan` = '$nama_jabatan', `gaji_pokok` = '$gaji_pokok', `uang_makan` = '$uang_makan' WHERE `jabatan`.`id` = $id ";
+  $sql = "UPDATE `jabatan` SET `id` = '$id', `nama_jabatan` = '$nama_jabatan', `gaji_pokok` = '$gaji_pokok' WHERE `jabatan`.`id` = $id ";
 
   $result = mysqli_query($conn, $sql);
 
@@ -99,11 +99,12 @@ if (isset($_POST["submit"])) {
           <td>:</td>
           <td>Rp. <input type="text" class="form-control" name="gaji_pokok" value="<?php echo $data['gaji_pokok'] ?>" required></td>
         </tr>
-        <tr>
+        <!-- <tr>
           <td>Uang Makan</td>
           <td>:</td>
           <td>Rp. <input type="text" class="form-control" name="uang_makan" value="<?php echo $data['uang_makan'] ?>" required></td>
-        </tr>  
+        </tr>  -->
+        <tr> 
             <td><br>
             <button type="submit"  name="submit">Update</button>
             <input type="button" name="kembali" value="Kembali" onclick ="self.history.back()">

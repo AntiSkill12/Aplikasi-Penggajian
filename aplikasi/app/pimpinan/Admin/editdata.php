@@ -24,12 +24,12 @@ if (isset($_GET['id'])) {
 }
 
 if (isset($_POST["submit"])) {
-    $nama_admin = $_POST ["nama_admin"];
-    $email = $_POST ["email"];
-    $username_input = $_POST ["username"];
-    $role = $_POST ["role"];
+    $nama_admin = $_POST["nama_admin"];
+    $email = $_POST["email"];
+    $username_input = $_POST["username"];
+    $role = $_POST["role"];
 
-    // Update data kecuali password jika password baru dan konfirmasi password tidak kosong
+    // Periksa apakah password baru dan konfirmasi password diisi
     $password_baru = $_POST['password_baru'];
     $confirm_password = $_POST['confirm_password'];
 
@@ -45,12 +45,21 @@ if (isset($_POST["submit"])) {
         if (mysqli_num_rows($result_username_check) > 0) {
             echo "<script>alert('Username sudah digunakan sebelumnya!');</script>";
         } else {
-            if (!empty($password_baru) && !empty($confirm_password) && $password_baru === $confirm_password) {
-                // Enkripsi password baru dengan MD5
-                $password_baru_md5 = md5($password_baru);
+            if (empty($password_baru) && empty($confirm_password)) {
+                // Jika password kosong, lakukan update tanpa mengubah password
+                $sql = "UPDATE `admin` SET `nama_admin` = '$nama_admin', `email` = '$email', `username` = '$username_input', `role` = '$role' WHERE `admin`.`id` = $admin_id";
+            } else {
+                // Jika password diisi, lakukan update termasuk password baru
+                if ($password_baru === $confirm_password) {
+                    // Enkripsi password baru dengan MD5
+                    $password_baru_md5 = md5($password_baru);
+                    $sql = "UPDATE `admin` SET `nama_admin` = '$nama_admin', `email` = '$email', `username` = '$username_input', `role` = '$role', `password` = '$password_baru_md5' WHERE `admin`.`id` = $admin_id";
+                } else {
+                    echo "<script>alert('Password dan konfirmasi Password harus sama!');</script>";
+                }
+            }
 
-                $sql = "UPDATE `admin` SET `nama_admin` = '$nama_admin', `email` = '$email', `username` = '$username_input', `role` = '$role', `password` = '$password_baru_md5' WHERE `admin`.`id` = $admin_id";
-
+            if (isset($sql)) {
                 $result = mysqli_query($conn, $sql);
 
                 if ($result) {
@@ -63,12 +72,11 @@ if (isset($_POST["submit"])) {
                 } else {
                     echo "Failed: " . mysqli_error($conn);
                 }
-            } else {
-                echo "<script>alert('Password dan konfirmasi Password harus sama!');</script>";
             }
         }
     }
 }
+
 ?>
 
 
@@ -144,12 +152,12 @@ if (isset($_POST["submit"])) {
                 <tr>
                     <td>Password Baru</td>
                     <td>:</td>
-                    <td><input type="password" name="password_baru" required minlength="6"></td>
+                    <td><input type="password" name="password_baru"  minlength="6"></td>
                 </tr>
                 <tr>
                     <td>Confirm Password </td>
                     <td>:</td>
-                    <td><input type="password" name="confirm_password" required minlength="6"></td>
+                    <td><input type="password" name="confirm_password"  minlength="6"></td>
                 </tr>
                 <tr>
                     <td>Role</td>
